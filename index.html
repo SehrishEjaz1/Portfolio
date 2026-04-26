@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sehrish Ejaz — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue-50: #E6F1FB;
+    --blue-100: #B5D4F4;
+    --blue-400: #378ADD;
+    --blue-600: #185FA5;
+    --blue-800: #0C447C;
+    --blue-900: #042C53;
+    --gray-50: #F8FAFB;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-200);
+    z-index: 100;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--blue-800);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-600); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    background: linear-gradient(135deg, var(--blue-50) 0%, var(--white) 60%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--blue-50);
+    right: -150px;
+    top: -100px;
+    opacity: 0.5;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: var(--blue-100);
+    right: 100px;
+    bottom: 50px;
+    opacity: 0.3;
+  }
+
+  .hero-content {
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--blue-100);
+    letter-spacing: 0.5px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    color: var(--gray-800);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+  }
+
+  .hero h1 span { color: var(--blue-600); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+    max-width: 540px;
+    font-weight: 400;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue-600);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: 2px solid var(--blue-600);
+  }
+
+  .btn-primary:hover {
+    background: var(--blue-800);
+    border-color: var(--blue-800);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--blue-600);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: 2px solid var(--blue-600);
+  }
+
+  .btn-outline:hover {
+    background: var(--blue-50);
+    transform: translateY(-1px);
+  }
+
+  /* SECTIONS */
+  section { padding: 80px 8%; }
+
+  .section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--blue-400);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--gray-800);
+    margin-bottom: 3rem;
+    font-weight: 600;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--gray-50); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--blue-100);
+    box-shadow: 0 4px 20px rgba(24, 95, 165, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--blue-50);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .skill-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-card p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 14px;
+    padding: 1.8rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--blue-600);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-card:hover {
+    border-color: var(--blue-100);
+    box-shadow: 0 8px 30px rgba(24, 95, 165, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .project-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .badge-blue {
+    background: var(--blue-50);
+    color: var(--blue-600);
+    border: 1px solid var(--blue-100);
+  }
+
+  .badge-green {
+    background: #EAF3DE;
+    color: #3B6D11;
+    border: 1px solid #C0DD97;
+  }
+
+  .badge-ongoing {
+    background: #FAEEDA;
+    color: #854F0B;
+    border: 1px solid #FAC775;
+  }
+
+  .project-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .project-card p {
+    font-size: 0.88rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .project-tech {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    background: var(--gray-100);
+    color: var(--gray-600);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  /* AWARDS */
+  #awards { background: var(--blue-800); }
+
+  #awards .section-label { color: var(--blue-100); }
+  #awards .section-title { color: var(--white); }
+
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .award-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.2s;
+  }
+
+  .award-card:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
+  }
+
+  .award-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .award-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .award-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* CONTACT */
+  #contact { background: var(--gray-50); text-align: center; }
+
+  .contact-desc {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--white);
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    color: var(--blue-600);
+    border-color: var(--blue-100);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(24,95,165,0.1);
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { gap: 1rem; }
+    section { padding: 60px 5%; }
+    .hero { padding: 0 5%; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">SE.</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-tag">Open to Internships</span>
+    <h1>Hi, I'm <span>Sehrish Ejaz</span></h1>
+    <p class="hero-desc">
+      Computer Science undergraduate at FAST NUCES Lahore, passionate about Software Development, UI/UX Design, and Artificial Intelligence. Always learning, always building.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">What I bring</p>
+  <h2 class="section-title">Skills & Technologies</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">💻</div>
+      <h3>Programming</h3>
+      <p>Python, C, C++, SQL, x86 Assembly, HTML, CSS</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎨</div>
+      <h3>UI/UX Design</h3>
+      <p>Figma, Wireframing, Prototyping, User-Centered Design</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🧪</div>
+      <h3>Software Testing</h3>
+      <p>Katalon Studio, Selenium, EP & BVA, Data-Driven Testing</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤖</div>
+      <h3>Artificial Intelligence</h3>
+      <p>Machine Learning, Random Forest, Pandas, Python</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🛠️</div>
+      <h3>Tools & Platforms</h3>
+      <p>Git, GitHub, VS Code, Linux, Cisco Packet Tracer</p>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🤝</div>
+      <h3>Soft Skills</h3>
+      <p>Teamwork, Problem Solving, Communication, Presentations</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">What I've built</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-blue">SE + HCI</span>
+        <span class="badge badge-ongoing">In Progress</span>
+      </div>
+      <h3>TradeNex — Digital Trade & Ordering Platform</h3>
+      <p>Web-based procurement platform for tile installation materials targeting contractors and distributors. Designed Figma wireframes and prototypes focused on usability and guided user workflows.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Figma</span>
+        <span class="tech-tag">UI/UX</span>
+        <span class="tech-tag">System Design</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-blue">AI</span>
+        <span class="badge badge-ongoing">In Progress</span>
+      </div>
+      <h3>AI-Powered Material Recommendation System</h3>
+      <p>Decision support system for TradeNex that estimates tile installation material quantities (clips, wedges, grout) and recommends grout colour based on project inputs.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Random Forest</span>
+        <span class="tech-tag">Pandas</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">DB</span>
+      </div>
+      <h3>Online Library Management System</h3>
+      <p>Database-driven system with member management, book tracking, and fine calculation. Designed ER diagrams and normalized schema to 3NF with complex SQL queries.</p>
+      <div class="project-tech">
+        <span class="tech-tag">SQL</span>
+        <span class="tech-tag">Oracle/MySQL</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">CN</span>
+      </div>
+      <h3>RIP vs OSPF Routing Comparison</h3>
+      <p>Performance evaluation of two routing protocols implemented on Cisco Packet Tracer. Analyzed convergence time, bandwidth usage, and scalability across topologies.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Cisco Packet Tracer</span>
+        <span class="tech-tag">RIP</span>
+        <span class="tech-tag">OSPF</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">COAL</span>
+      </div>
+      <h3>Pac-Man Game in x86 Assembly</h3>
+      <p>VGA text-mode game with animated character movement. Implemented game loop, keyboard input handling, and screen rendering at low level.</p>
+      <div class="project-tech">
+        <span class="tech-tag">x86 Assembly</span>
+        <span class="tech-tag">DOSBox</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">DSA</span>
+      </div>
+      <h3>Customer Service Module</h3>
+      <p>Built using doubly linked lists and AVL trees for user data management with optimized search and retrieval using custom templates.</p>
+      <div class="project-tech">
+        <span class="tech-tag">C++</span>
+        <span class="tech-tag">AVL Trees</span>
+        <span class="tech-tag">DLL</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">OOP</span>
+      </div>
+      <h3>Hotel Management System</h3>
+      <p>Hotel booking and services system using OOP principles with room allocation and billing with efficient data handling.</p>
+      <div class="project-tech">
+        <span class="tech-tag">C++</span>
+        <span class="tech-tag">OOP</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-badges">
+        <span class="badge badge-green">Completed</span>
+        <span class="badge badge-blue">ST</span>
+      </div>
+      <h3>Katalon Studio Web Testing</h3>
+      <p>Automated Web UI functional testing of a login workflow. Covers positive/negative cases, EP & BVA, and data-driven testing.</p>
+      <div class="project-tech">
+        <span class="tech-tag">Katalon Studio</span>
+        <span class="tech-tag">Selenium</span>
+        <span class="tech-tag">CI/CD</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Awards & Achievements</h2>
+  <div class="awards-grid">
+    <div class="award-card fade-in">
+      <div class="award-icon">🥇</div>
+      <h3>Winner — C++ Coding Competition</h3>
+      <p>FAST Problem-Solving Challenge, Fsd Campus 2024</p>
+    </div>
+    <div class="award-card fade-in">
+      <div class="award-icon">🥈</div>
+      <h3>Runner-Up — Business Scavenger Hunt</h3>
+      <p>FAST NUCES Business Society, Isb Campus 2024</p>
+    </div>
+    <div class="award-card fade-in">
+      <div class="award-icon">📜</div>
+      <h3>Certificate of Participation</h3>
+      <p>FAST Literature Society, 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Say hello</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <p class="contact-desc">I'm looking for internship opportunities. Feel free to reach out — I'd love to connect!</p>
+  <div class="contact-links">
+    <a href="mailto:sehrish.ejaz01@gmail.com" class="contact-link">
+      ✉️ sehrish.ejaz01@gmail.com
+    </a>
+    <a href="https://github.com/SehrishEjaz1" class="contact-link" target="_blank">
+      💻 GitHub
+    </a>
+    <a href="tel:03008327301" class="contact-link">
+      📞 03008327301
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Designed & built by Sehrish Ejaz &copy; 2026</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
